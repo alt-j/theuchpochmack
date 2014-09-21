@@ -1,0 +1,31 @@
+{
+  "name": "theuchpochmack",
+  "description": "The Uchpochmack",
+  "version": "0.0.1",
+  "author": "Andrey Morozov <alt-j@yandex-team.ru>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alt-j/theuchpochmack.git"
+  },
+  "dependencies": {
+    "enb-bevis-helper": ">=1.0.2",
+    "inherit": "1.0.4",
+    "node.extend": "1.0.7",
+    "vow": "0.3.9",
+    "vow-fs": "0.2.0",
+    "winston": "0.6.2",
+    "ym": "0.0.8"
+  },
+  "devDependencies": {
+    "jscs": "1.0.13",
+    "jshint-groups": "0.5.3",
+    "git-hooks": "0.0.3",
+    "supervisor": "0.5.3"
+  },
+  "enb": {
+    "sources": [
+      "blocks"
+    ]
+  }
+}
