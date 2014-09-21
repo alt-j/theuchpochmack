@@ -21,11 +21,14 @@ modules.define('player', [
             this._context = new AudioContext();
 
             this._turntable = Turntable.find(this.getDomNode());
+
             this._tracks = Track.findAll(this.getDomNode());
             this._currentTrackIndex = null;
 
-            var _this = this;
             this._buffers = {};
+            this._buffersCallbacks = {};
+
+            var _this = this;
             this._tracks.forEach(function (track) {
                 _this._loadSoundFile(track.getSourceUrl());
                 _this._bindTo(track, 'click', _this._onTrackClick);
@@ -43,6 +46,11 @@ modules.define('player', [
                     this.response,
                     function(decodedArrayBuffer) {
                         _this._buffers[url] = decodedArrayBuffer;
+
+                        if (typeof _this._buffersCallbacks[url] == 'function') {
+                            _this._buffersCallbacks[url]();
+                            _this._buffersCallbacks[url] = null;
+                        }
                     }, function(e) {
                         console.log('Error decoding file', e);
                     }
@@ -82,20 +90,32 @@ modules.define('player', [
                 this._stop();
             }
 
-            this._source = this._context.createBufferSource();
-            this._source.buffer = this._buffers[url];
+            if (this._buffers[url]) {
+                this._source = this._context.createBufferSource();
+                this._source.buffer = this._buffers[url];
 
-            var destination = this._context.destination;
-            this._source.connect(destination);
+                var destination = this._context.destination;
+                this._source.connect(destination);
 
-            this._source.start(0);
+                this._source.start(0);
 
-            this._turntable.start(1);
+                this._turntable.start(1);
 
-            this._source.onended = this._onTrackEnd.bind(this);
+                this._source.onended = this._onTrackEnd.bind(this);
+            } else {
+                var _this = this;
+                this._buffersCallbacks[url] = function () {
+                    _this._play(url);
+                };
+            }
         },
 
         _stop: function () {
+            var url = this._tracks[this._currentTrackIndex].getSourceUrl();
+            if (this._buffersCallbacks[url]) {
+                this._buffersCallbacks[url] = null;
+            }
+
             this._source.stop(0);
             this._source.onended = null;
 
