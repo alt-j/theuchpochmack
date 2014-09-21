@@ -1,0 +1,99 @@
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/page/page.styl:begin */
+@font-face {
+  font-family: Outwrite;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Outwrite'), local('outwrite'), url("fonts/outwrite.ttf") format('ttf');
+}
+@font-face {
+  font-family: Outwrite;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Outwrite'), local('outwrite'), url("fonts/outwrite.svg") format('svg');
+}
+@font-face {
+  font-family: Outwrite;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Outwrite'), local('outwrite'), url("fonts/outwrite.woff") format('woff');
+}
+@font-face {
+  font-family: Outwrite;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Outwrite'), local('outwrite'), url("fonts/outwrite.eot") format('eot');
+}
+.page {
+  font-family: Outwrite;
+  margin: 0;
+  padding: 0;
+  min-width: 1000px;
+  min-height: 600px;
+  color: #1c1c1c;
+  background-color: #646464;
+}
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/page/page.styl:end */
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/selfie/selfie.styl:begin */
+.selfie {
+  position: absolute;
+  bottom: 0;
+  left: -70px;
+  width: 440px;
+  height: 260px;
+  background: url("selfie.jpg");
+}
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/selfie/selfie.styl:end */
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/player/player.styl:begin */
+.player__list {
+  position: absolute;
+  top: 550px;
+  right: 600px;
+}
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/player/player.styl:end */
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/turntable/turntable.styl:begin */
+.turntable {
+  position: absolute;
+  top: -100px;
+  right: 500px;
+  width: 600px;
+  height: 600px;
+  opacity: 0.7;
+  background: url("turntable.png");
+}
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/turntable/turntable.styl:end */
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/track/track.styl:begin */
+.track {
+  font-size: 36px;
+  line-height: 60px;
+}
+.track__text:before {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+  padding: 5px 5px 0 10px;
+  content: '\25B6';
+  cursor: pointer;
+  text-align: center;
+  color: rgba(214,214,214,0.7);
+  border: 1px solid;
+  border-radius: 25px;
+}
+.track._played > .track__text:before {
+  padding: 4px 8px 1px 7px;
+  content: '\25A9';
+}
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/track/track.styl:end */
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/poster/poster.styl:begin */
+.poster {
+  position: absolute;
+  top: 50%;
+  right: 500px;
+}
+.poster__image {
+  position: absolute;
+  top: -350px;
+  width: 470px;
+  height: 700px;
+  background: url("poster.jpg");
+}
+/* /Users/morozov/Documents/scripts/theuchpochmack/blocks/client/poster/poster.styl:end */
