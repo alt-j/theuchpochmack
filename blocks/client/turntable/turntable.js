@@ -70,7 +70,8 @@ modules.define('turntable', [
         _turnRotation: function () {
             var _this = this;
             var node = this.getDomNode();
-            var currentRotationAngel = 0;
+            var currentRotationAngel = node.css('transform').match(/[\d\.]+/);
+            currentRotationAngel = currentRotationAngel ? parseFloat(currentRotationAngel.pop(), 10) : 0;
 
             this._intervalRotationId = setInterval(function () {
                 if (currentRotationAngel >= 360) {

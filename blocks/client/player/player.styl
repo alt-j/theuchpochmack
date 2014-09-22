@@ -1,7 +1,30 @@
 .player {
     &__list {
         position: absolute;
-        top: 550px;
-        right: 600px;
+        top: 200px;
+        right: 1200px;
+    }
+
+    &__panel {
+        position: absolute;
+        top: 450px;
+        right: 550px;
+    }
+
+    &__power {
+        display: inline-block;
+
+        width: 30px;
+        height: 60px;
+
+        cursor: pointer;
+        user-select: none;
+        transform: rotate(90deg);
+
+        background: url(on.png);
+    }
+
+    &__power._reverted {
+        background: url(off.png);
     }
 }

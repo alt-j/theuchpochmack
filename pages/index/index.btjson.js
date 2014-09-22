@@ -21,10 +21,10 @@ module.exports = {
         block: 'player',
         tracks: [{
             name: 'someday',
-            src: 'audio/someday.mp3'
+            src: '//cs1-31v4.vk.me/p9/a698d70e7561fa.mp3'
         }, {
             name: 'lightbulbs',
-            src: 'audio/lightbulbs.mp3'
+            src: '//cs1-41v4.vk.me/p10/978d3f3ead8dae.mp3'
         }]
     },{
         block: 'poster'
