@@ -16,7 +16,6 @@ module.exports = function (bt) {
     });
 
     bt.match('track*__audio', function (ctx) {
-        ctx.setTag('audio');
-        ctx.setAttr('src', ctx.getParam('src'));
+        ctx.setInitOption('src', ctx.getParam('src'));
     });
 };

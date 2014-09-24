@@ -1,3 +1,7 @@
 .enb/tmp
 */*/.DS_Store
 node_modules/
+pages
+!pages/index/index.btjson.js
+!pages/index/favicon.ico
+!pages/index/image.jpg

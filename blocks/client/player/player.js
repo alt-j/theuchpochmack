@@ -31,43 +31,14 @@ modules.define('player', [
             var AudioContext = window.AudioContext || window.webkitAudioContext;
             this._context = new AudioContext();
 
-            this._tracks = [];
-
-            var _this = this;
-            Track.findAll(this.getDomNode())
-                .forEach(function (track) {
-                    _this._addTrack(track);
-                });
-        },
-
-        _addTrack: function (track) {
-            var mediaElement = track.getMediaElement();
-            var source = this._context.createMediaElementSource(mediaElement);
-
-            var index = this._tracks.push(source);
-
-            var _this = this;
-
-            mediaElement.addEventListener('ended', function () {
-                if (_this._tracks[index + 1]) {
-                    _this.play(_this._tracks[index + 1]);
-                } else {
-                    _this.stop();
-                }
-            }, true);
-
-            mediaElement.addEventListener('error', function () {
-                _this.stop();
-            }, true);
-
-            return index;
+            this._tracks = Track.findAll(this.getDomNode());
         },
 
         play: function (index) {
-            if (!this._source || this._source && !this._source.mediaElement.paused) {
+            if (!this._source || this._source.mediaElement.ended) {
                 this.stop();
 
-                this._source = index ? this._tracks[index] : this._tracks[0];
+                this._source = this._getSource(index || 0);
 
                 var gainNode = this._context.createGain();
                 this._source.connect(gainNode);
@@ -79,6 +50,27 @@ modules.define('player', [
             this._setElementState(this._control, 'reverted');
 
             return this;
+        },
+
+        _getSource: function (index) {
+            var mediaElement = this._tracks[index].getMediaElement();
+            var source = this._context.createMediaElementSource(mediaElement);
+
+            var _this = this;
+
+            mediaElement.addEventListener('ended', function () {
+                if (_this._tracks[index + 1]) {
+                    _this.play(index + 1);
+                } else {
+                    _this.stop();
+                }
+            }, true);
+
+            mediaElement.addEventListener('error', function () {
+                _this.stop();
+            }, true);
+
+            return source;
         },
 
         pause: function () {

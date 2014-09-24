@@ -11,18 +11,18 @@ module.exports = {
     }, {
         source: [
             'modules.require(\'player\', function (Player) {',
-            '   var player = Player.find(document.body)',
+            '   var player = Player.find(document.body);',
             '});'
         ].join('\n')
     }],
     body: [{
         block: 'player',
         tracks: [{
-            name: 'someday',
-            src: '//cs1-43v4.vk.me/p21/cd2060a75c8ba3.mp3?extra=COm8EfI4RpM0gZwwCqaNw1FlwM8xxxJkYMGz9D49CMyRsqd9ri_7OzyyS2pVCh-gSLt1ujd5bHxbIZEJl998jeKMZDMBWA,167'
-        }, {
             name: 'lightbulbs',
-            src: '//cs1-41v4.vk.me/p10/a492be0c2f4b9b.mp3?extra=jL52QMVeVrJBrwnl9RZi1-R4n5POx75dtgJaqO8BBT5cqFk8Y7iSIXujlUKoq7lCU3Gc94B_8NdFtTAwsZyRonQuRWu3s1E,354'
+            src: 'https://www.dropbox.com/s/dcftlz4n8z87eq0/lightbulbs.mp3?dl=1'
+        }, {
+            name: 'someday',
+            src: 'https://www.dropbox.com/s/c1tspdoyathaeo0/someday.mp3?dl=1'
         }]
     },{
         block: 'poster'
