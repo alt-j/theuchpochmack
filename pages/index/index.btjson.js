@@ -16,8 +16,6 @@ module.exports = {
         ].join('\n')
     }],
     body: [{
-        block: 'selfie'
-    }, {
         block: 'player',
         tracks: [{
             name: 'someday',
