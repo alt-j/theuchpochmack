@@ -553,7 +553,7 @@ modules.define('player', [
             var mediaElement = track.getMediaElement();
             var source = this._context.createMediaElementSource(mediaElement);
 
-            var index = this._tracks.push(source);
+            var index = this._tracks.push(source) - 1;
 
             var _this = this;
 
