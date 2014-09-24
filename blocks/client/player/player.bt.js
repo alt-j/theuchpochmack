@@ -5,16 +5,10 @@ module.exports = function (bt) {
         ctx.setContent([{
             block: 'turntable'
         }, {
-            elem: 'panel'
+            elem: 'play-button'
         }, {
             elem: 'list',
             tracks: ctx.getParam('tracks')
-        }]);
-    });
-
-    bt.match('player*__panel', function (ctx) {
-        ctx.setContent([{
-            elem: 'power'
         }]);
     });
 

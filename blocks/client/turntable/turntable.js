@@ -16,7 +16,7 @@ modules.define('turntable', [
             var options = this._getOptions() || {};
 
             this._repaintTimeout = options.repaintTimeout || 50;
-            this._overclockingTime = options.overclockingTime || 5000;
+            this._overclockingTime = options.overclockingTime || 3000;
         },
 
         start: function (frequency) {
@@ -70,16 +70,15 @@ modules.define('turntable', [
         _turnRotation: function () {
             var _this = this;
             var node = this.getDomNode();
-            var currentRotationAngel = node.css('transform').match(/[\d\.]+/);
-            currentRotationAngel = currentRotationAngel ? parseFloat(currentRotationAngel.pop(), 10) : 0;
+            this.currentRotationAngle = this.currentRotationAngle || 0;
 
             this._intervalRotationId = setInterval(function () {
-                if (currentRotationAngel >= 360) {
-                    currentRotationAngel -= (360 - _this._delta);
+                if (_this.currentRotationAngle >= 360) {
+                    _this.currentRotationAngle -= (360 - _this._delta);
                 } else {
-                    currentRotationAngel += _this._delta;
+                    _this.currentRotationAngle += _this._delta;
                 }
-                node.css('transform', 'rotate(' + currentRotationAngel + 'deg)');
+                node.css('transform', 'rotate(' + _this.currentRotationAngle + 'deg)');
             }, this._repaintTimeout);
         }
     }, {

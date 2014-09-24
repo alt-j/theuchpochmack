@@ -5,26 +5,24 @@
         right: 1200px;
     }
 
-    &__panel {
+    &__play-button {
         position: absolute;
-        top: 450px;
-        right: 550px;
+        z-index: 1;
+        top: calc(50% - 15px);
+        right: 225px;
+
+        width: 100px;
+        height: 100px;
+
+        opacity: .6;
+        background: url(play.png);
     }
 
-    &__power {
-        display: inline-block;
-
-        width: 30px;
-        height: 60px;
-
-        cursor: pointer;
-        user-select: none;
-        transform: rotate(90deg);
-
-        background: url(on.png);
+    &__play-button:hover {
+        opacity: .8;
     }
 
-    &__power._reverted {
-        background: url(off.png);
+    &__play-button._reverted {
+        background: url(pause.png);
     }
 }
